@@ -9,9 +9,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/home', function () {
+    return view('home')->name('homepage');
+});
+
+
+Route::get('/home', function () {
+    return view('home');
+})->name('homepage');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -20,10 +25,12 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth','role:admin'])->group(function(){
-    Route::get('/admin/dashboard',[AdminController::class,'dashboard']);
+    Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
+   
 });
 Route::middleware(['auth','role:user'])->group(function(){
     Route::get('/user/dashboard',[UserController::class,'dashboard']);
+  
 });
 
 require __DIR__.'/auth.php';
