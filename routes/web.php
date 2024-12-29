@@ -9,9 +9,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('home')->name('homepage');
-});
+// Route::get('/home', function () {
+//     return view('home')->name('homepage');
+// });
 
 
 Route::get('/home', function () {
@@ -22,10 +22,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/blogs', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/users',[AdminController::class,'fetchData'])->name('admin.users');
+    Route::get('/admin/posts',[AdminController::class,'posts'])->name('admin.posts');
    
 });
 Route::middleware(['auth','role:user'])->group(function(){
