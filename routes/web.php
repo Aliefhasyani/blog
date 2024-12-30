@@ -32,7 +32,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
    
 });
 Route::middleware(['auth','role:user'])->group(function(){
-    Route::get('/user/dashboard',[UserController::class,'dashboard']);
+    Route::get('/user/dashboard',[UserController::class,'dashboard'])->name('user.dashboard');
   
 });
 

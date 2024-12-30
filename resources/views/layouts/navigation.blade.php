@@ -33,6 +33,7 @@
                             {{ __('Home') }}
                         </x-nav-link>
                     </div>
+                    
                 @endif
             </div>
 
@@ -69,6 +70,16 @@
                             <x-dropdown-link :href="route('profile.edit')">
                                 {{ __('Profile') }}
                             </x-dropdown-link>
+                        @if(Auth::user()->role == 'admin')
+                            <x-dropdown-link :href="route('admin.dashboard')">
+                                {{ __('Dashboard') }}
+                            </x-dropdown-link>
+                        @elseif((Auth::user()->role == 'user'))
+                            <x-dropdown-link :href="route('user.dashboard')">
+                                {{ __('Dashboard') }}
+                            </x-dropdown-link>
+                        @endif
+
 
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
