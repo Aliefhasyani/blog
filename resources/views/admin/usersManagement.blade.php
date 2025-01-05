@@ -1,5 +1,6 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
 <style>
     .table-container {
@@ -32,39 +33,45 @@
 
     <div class="table-container py-6">
         <table class="table bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-            <thead >
+            <thead>
                 <tr>
-                    <th scope="col" style="background-color: #000000; color:#F5F5F5; text-align:center;">ID</th>
-                    <th scope="col" style="background-color: #000000; color:#F5F5F5; text-align:center;">USERNAME</th>
-                    <th scope="col" style="background-color: #000000; color:#F5F5F5; text-align:center;">EMAIL</th>
-                    <th scope="col" style="background-color: #000000; color:#F5F5F5; text-align:center;">ROLE</th>
-                    <th scope="col" style="background-color: #000000; color:#F5F5F5; text-align:center;">ACTION</th>
+                    <th scope="col" style=" color:#1A1A1D; text-align:center;">ID</th>
+                    <th scope="col" style=" color:#1A1A1D; text-align:center;">USERNAME</th>
+                    <th scope="col" style=" color:#1A1A1D; text-align:center;">EMAIL</th>
+                    <th scope="col" style=" color:#1A1A1D; text-align:center;">ROLE</th>
+                    <th scope="col" style=" color:#1A1A1D; text-align:center;">ACTION</th>
                 </tr>
             </thead>
-          
             <tbody>
                 @foreach($users as $value)
                     <tr>
                         <td style="text-align:center;">{{ $value->id }}</td>
                         <td style="text-align:center;">{{ $value->name }}</td>
                         <td style="text-align:center;">{{ $value->email }}</td>
-                        <td style="text-align:center;">{{ $value->role }}</td>
+                        @if($value->role == 'admin')
+                            <td style="text-align:center; color:#5CB338">{{ $value->role }}</td>
+                        @else
+                            <td style="text-align:center; color:black ">{{ $value->role }}</td>
+                        @endif
+                        
                         <td style="text-align:center;">
-                            <div class="d-flex justify-content-center ">
-                                <a href="{{ route('homepage') }}">
-                                    <button type="button" class="btn btn-warning shadow-lg; bi bi-pen">EDIT</button>
+                            <div class="d-flex justify-content-center">
+                                <a href="{{ route('admin.edit',$value->id) }}">
+                                    <button type="button" class="btn btn-warning shadow-lg bi bi-pen">EDIT</button>
                                 </a>
-                                
-                                    <a href="{{ route('homepage') }}" class="ms-2">
-                                        <button type="button" class="btn btn-danger shadow-lg;   bi bi-trash">DELETE</button>
-                                    </a>
-                                
+                                <a href="{{ route('homepage') }}" class="ms-2">
+                                    <button type="button" class="btn btn-danger shadow-lg bi bi-trash">DELETE</button>
+                                </a>
                             </div>
                         </td>
-                        
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
+    
+    <div class="d-flex justify-content-center mt-4">
+        {{ $users->links('pagination::bootstrap-5') }}
+    </div>
+    
 </x-app-layout>

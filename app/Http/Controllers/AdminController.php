@@ -2,13 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\DB;
+
+use App\Http\Requests\ProfileUpdateRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\View\View;
 
 class AdminController extends Controller
 {
@@ -16,12 +23,16 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
-    public function fetchData(){
-        $users = User::all();
+    public function fetchData(): View{
+        // $users = User::all();
         
 
-        return view('admin.usersManagement',compact('users'));
-    }
+        // return view('admin.usersManagement',compact('users'));
+        
+        $users = DB::table('users')->paginate(14); 
+        
+        return view('admin.usersManagement', ['users' => $users]);
+    }   
     
     public function posts(){
         return view('admin.postsManagement');
@@ -53,5 +64,44 @@ class AdminController extends Controller
 
         return view('admin.usersManagement',compact('users'));
     }
+
+    public function edit($id)
+    {
+        $users = User::find($id);
+    
+        if (!$users) {
+            return redirect()->route('admin.users')->with('error', 'User not found.');
+        }
+    
+        return view('admin.editUser', compact('users'));
+    }
+    
+    
+
+    public function update(Request $request)
+    {
+        $name = $request->input('name');
+        $email = $request->input('email');
+        $role = $request->input('role');
+
+
+    
+
+        DB::table('users')
+            ->where('id', '=', Auth::user()->id)
+            ->update([
+                'name' => $name,
+                'email' => $email,
+                'role' => $role
+            ]);
+
+            $users = User::paginate(14);
+
+        return view('admin.usersManagement', compact('users'));
+    }
+    
+    
+ 
+    
     
 }

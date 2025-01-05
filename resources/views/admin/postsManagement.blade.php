@@ -10,4 +10,6 @@
             </div>
         </div>
     </div>
+ 
 </x-app-layout>
+{{ url()->previous() }}
