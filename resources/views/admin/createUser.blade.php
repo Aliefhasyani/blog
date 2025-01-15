@@ -35,20 +35,20 @@
                 <div>
                     
                     <x-input-label for="name" value='Name'/>
-                    <x-text-input id="name" name="name" type="text" class="mt-1 block w-full"  required autofocus autocomplete="name" />
+                    <x-text-input id="name" name="name" type="text" class="mt-1 block w-full"  required autofocus autocomplete="name" value="_"/>
                     <x-input-error class="mt-2" :messages="$errors->get('name')" />
                   
                 </div>
                 <br>
                 <div>
                     <x-input-label for="email" value='Email'/>
-                    <x-text-input id="email" name="email" type="email" class="mt-1 block w-full"  required autocomplete="username" />
+                    <x-text-input id="email" name="email" type="email" class="mt-1 block w-full"  required autocomplete="username" value="_" />
                     <x-input-error class="mt-2" :messages="$errors->get('email')" />
                 </div>
                 <br>
                 <div>
                     <x-input-label for="password" value='Password' />
-                    <x-text-input id="password" name="password" type="password" class="mt-1 block w-full"  required autofocus autocomplete="name" />
+                    <x-text-input id="password" name="password" type="password" class="mt-1 block w-full"  required autofocus autocomplete="name" value="_" />
                 </div>
         
                 
@@ -72,10 +72,10 @@
             
             </div>
         </div>
-                
-                
-                
     </form>
+                
+                
+                
     
 
 

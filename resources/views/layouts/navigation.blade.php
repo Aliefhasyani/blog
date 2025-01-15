@@ -39,7 +39,14 @@
                             {{ __('Posts') }}
                         </x-nav-link>
                     </div>
+
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('user.create')" :active="request()->routeIs('user.create')">
+                            {{ __('Create Post') }}
+                        </x-nav-link>
+                    </div>
                     
+
                 @endif
             </div>
 
@@ -73,7 +80,7 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('profile.edit')">
+                            <x-dropdown-link :href="route('profilePage')">
                                 {{ __('Profile') }}
                             </x-dropdown-link>
                         @if(Auth::user()->role == 'admin')
@@ -132,10 +139,7 @@
                     </div>
 
                 <div class="mt-3 space-y-1">
-                    <x-responsive-nav-link :href="route('profile.edit')">
-                        {{ __('Profile') }}
-                    </x-responsive-nav-link>
-
+                 
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf

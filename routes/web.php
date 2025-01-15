@@ -17,10 +17,12 @@ Route::get('/home', function () {
 })->name('homepage');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-   Route::get('/posts', [UserController::class, 'postsPage'])->name('posts');
+  
+    Route::get('/profile/{id{', [UserController::class, 'profilepage'])->name('profilePage');
+    Route::get('/posts', [UserController::class, 'postsPage'])->name('posts');
+    Route::get('/createposts',[UserController::class,'createPosts'])->name('user.create');
+     
+    
   
 
 });
@@ -32,12 +34,14 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.store');
     Route::post('/admin/create', [AdminController::class, 'store'])->name('admin.store');
     Route::patch('/admin/update/{id}', [AdminController::class, 'update'])->name('admin.update');
-
     Route::get('/admin/edit/{id}', [AdminController::class, 'edit'])->name('admin.edit');
+    Route::delete('/admin/delete/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
 
+    
 });
 Route::middleware(['auth','role:user'])->group(function(){
     Route::get('/user/dashboard',[UserController::class,'dashboard'])->name('user.dashboard');
+
   
 });
 

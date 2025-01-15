@@ -24,11 +24,7 @@ class AdminController extends Controller
     }
 
     public function fetchData(): View{
-        // $users = User::all();
-        
-
-        // return view('admin.usersManagement',compact('users'));
-        
+       
         $users = DB::table('users')->paginate(14); 
         
         return view('admin.usersManagement', ['users' => $users]);
@@ -42,12 +38,14 @@ class AdminController extends Controller
             return view('admin.createUser');
     }
 
-    public function store(Request $request)
-    {
+    
+
+    public function store(Request $request){
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', Rules\Password   ::defaults()],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'], 
+            'password' => ['required', Rules\Password::defaults()],
+            'role' => ['required', 'in:admin,user'], 
         ]);
 
         User::create([
@@ -56,52 +54,46 @@ class AdminController extends Controller
             'role' => $request->role,
             'password' => Hash::make($request->password),
         ]);
+
         
-        $users = User::all();
-
-        // Auth::login($user);
-
-
+        $users = User::paginate(14);
         return view('admin.usersManagement',compact('users'));
     }
 
-    public function edit($id)
-    {
+
+    public function edit($id){
         $users = User::find($id);
-    
-        if (!$users) {
-            return redirect()->route('admin.users')->with('error', 'User not found.');
-        }
-    
+        
         return view('admin.editUser', compact('users'));
     }
     
     
 
-    public function update(Request $request)
-    {
-        $name = $request->input('name');
-        $email = $request->input('email');
-        $role = $request->input('role');
+    public function update(Request $request, $id){
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $id], 
+            'role' => ['required', 'in:admin,user'], 
+        ]);
 
-
-    
-
-        DB::table('users')
-            ->where('id', '=', Auth::user()->id)
-            ->update([
-                'name' => $name,
-                'email' => $email,
-                'role' => $role
-            ]);
-
-            $users = User::paginate(14);
-
-        return view('admin.usersManagement', compact('users'));
+        $user = User::findOrFail($id);
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'role' => $request->role,
+        ]);
+        
+        $users = User::paginate(14);
+        
+        return view('admin.usersManagement',compact('users'));
     }
-    
-    
- 
-    
+
+
+    public function destroy($id){
+        $users = User::find($id);
+        $users->delete(); 
+
+        return redirect()->back();
+    }
     
 }

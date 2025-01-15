@@ -49,7 +49,7 @@
                         <td style="text-align:center;">{{ $value->name }}</td>
                         <td style="text-align:center;">{{ $value->email }}</td>
                         @if($value->role == 'admin')
-                            <td style="text-align:center; color:#5CB338">{{ $value->role }}</td>
+                            <td style="text-align:center; color:#4E9F3D">{{ $value->role }}</td>
                         @else
                             <td style="text-align:center; color:black ">{{ $value->role }}</td>
                         @endif
@@ -59,16 +59,29 @@
                                 <a href="{{ route('admin.edit',$value->id) }}">
                                     <button type="button" class="btn btn-warning shadow-lg bi bi-pen">EDIT</button>
                                 </a>
-                                <a href="{{ route('homepage') }}" class="ms-2">
-                                    <button type="button" class="btn btn-danger shadow-lg bi bi-trash">DELETE</button>
-                                </a>
+                                
+                                <form class="d-inline" action="{{ route('admin.destroy', $value->id) }}" method="POST" >
+                                    @csrf
+                                    @method('DELETE')   
+                                    @if($value->role != 'admin' )
+                                        <button class="btn btn-danger shadow-lg bi bi-trash" type="submit">DELETE</button>
+                                    @else
+                                        <button class="btn btn-danger shadow-lg bi bi-trash" type="submit" disabled>DELETE</button>
+                                    @endif
+                                </form>
                             </div>
                         </td>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+                                        
+                                    
+                                
+                                
+                          
+
     
     <div class="d-flex justify-content-center mt-4">
         {{ $users->links('pagination::bootstrap-5') }}
