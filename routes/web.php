@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PostsController;
 use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
@@ -20,7 +21,7 @@ Route::middleware('auth')->group(function () {
   
     Route::get('/profile/{id{', [UserController::class, 'profilepage'])->name('profilePage');
     Route::get('/posts', [UserController::class, 'postsPage'])->name('posts');
-    Route::get('/createposts',[UserController::class,'createPosts'])->name('user.create');
+   
      
     
   
@@ -41,8 +42,11 @@ Route::middleware(['auth','role:admin'])->group(function(){
 });
 Route::middleware(['auth','role:user'])->group(function(){
     Route::get('/user/dashboard',[UserController::class,'dashboard'])->name('user.dashboard');
+    
 
-  
+    Route::get('/user/createPost', [PostsController::class, 'create'])->name('user.post');
+    
+ 
 });
 
 require __DIR__.'/auth.php';

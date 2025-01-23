@@ -27,7 +27,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100 heading-container">
                     <span>{{ __("Create a post! ") }}</span>
              
-                    <a href="{{ route('admin.store') }}">
+                    <a href="{{ route('user.post') }}">
                     </a>
                 </div>
             </div>
@@ -80,7 +80,7 @@
             
             <div class="p-6">
                 <a href="{{ url()->previous() }}"><button type="button" class="btn btn-dark bi bi-arrow-left">Back</button></a>
-                <button type="submit" class="btn btn-primary shadow-lg; bi bi-person-add">Add User</button>
+                <button type="submit" class="btn btn-primary shadow-lg; bi bi-pen">Add Post</button>
             
             </div>
         </div>
