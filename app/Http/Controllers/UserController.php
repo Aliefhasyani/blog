@@ -13,9 +13,7 @@ class UserController extends Controller
         return view('user.dashboard');
     }
 
-    public function postsPage(){
-        return view('postsPage');
-    }
+  
 
     public function profilePage(){
         return view('profile');

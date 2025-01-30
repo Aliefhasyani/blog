@@ -27,8 +27,6 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100 heading-container">
                     <span>{{ __("Create a post! ") }}</span>
              
-                    <a href="{{ route('user.post') }}">
-                    </a>
                 </div>
             </div>
         </div>
@@ -41,7 +39,7 @@
 
     
     
-    <form action="{{ route('admin.store') }}" method="POST">
+    <form action="{{ route('user.post') }}" method="POST">
         @csrf
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm mx-auto sm:rounded-lg" style="max-width: 1220px;">
             <div class="p-6 text-gray-900 dark:text-gray-100" >
@@ -67,7 +65,7 @@
                 <br>
                 <div>
                     <x-input-label for="blog" value='Blog Content' />
-                    <textarea name="comment" form="usrform" class="mt-1 block w-full" style="height: 1000px" placeholder="Blog content goes here..."></textarea>
+                    <textarea name="content" form="usrform" class="mt-1 block w-full" style="height: 1000px" placeholder="Blog content goes here..."></textarea>
                 </div>
         
                 

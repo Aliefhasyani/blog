@@ -20,7 +20,8 @@ Route::get('/home', function () {
 Route::middleware('auth')->group(function () {
   
     Route::get('/profile/{id{', [UserController::class, 'profilepage'])->name('profilePage');
-    Route::get('/posts', [UserController::class, 'postsPage'])->name('posts');
+    Route::get('/posts', [PostsController::class, 'postsPage'])->name('posts');
+    
    
      
     
@@ -42,9 +43,10 @@ Route::middleware(['auth','role:admin'])->group(function(){
 });
 Route::middleware(['auth','role:user'])->group(function(){
     Route::get('/user/dashboard',[UserController::class,'dashboard'])->name('user.dashboard');
+    Route::get('/user/createPost',[PostsController::class,'showCreateForm'])->name('user.post');
     
 
-    Route::get('/user/createPost', [PostsController::class, 'create'])->name('user.post');
+
     
  
 });
