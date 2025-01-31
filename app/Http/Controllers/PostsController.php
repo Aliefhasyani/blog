@@ -2,15 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class postsController extends Controller
 {
     public function postsPage(){
-        return view('postsPage');
+        $posts = DB::table('posts')->paginate(14);
+
+        return view('postsPage',['posts'=>$posts]);
     }
 
-    public function showCreateForm(){
+    public function create(){
+        return view('user.createPosts');
+    }
+
+    public function store(Request $request){
+        Post::create([
+            'title' => $request->input('title'),
+            'content' =>$request->input('content')
+        ]);
+
         return view('user.createPosts');
     }
 }

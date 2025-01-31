@@ -67,8 +67,8 @@
                 
             
             <div class="p-6">
-                <a href="{{ url()->previous() }}"><button type="button" class="btn btn-dark bi bi-arrow-left">Back</button></a>
-                <button type="submit" class="btn btn-primary shadow-lg; bi bi-person-add">Add User</button>
+                <a href="{{ url()->previous() }}"><button type="button" class="btn btn-dark bi bi-arrow-left"> Back</button></a>
+                <button type="submit" class="btn btn-primary shadow-lg; bi bi-person-add"> Add User</button>
             
             </div>
         </div>

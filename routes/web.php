@@ -43,7 +43,8 @@ Route::middleware(['auth','role:admin'])->group(function(){
 });
 Route::middleware(['auth','role:user'])->group(function(){
     Route::get('/user/dashboard',[UserController::class,'dashboard'])->name('user.dashboard');
-    Route::get('/user/createPost',[PostsController::class,'showCreateForm'])->name('user.post');
+    Route::get('/user/createPost',[PostsController::class,'create'])->name('user.post');
+    Route::post('/user/createPost',[PostsController::class,'store'])->name('user.post');
     
 
 

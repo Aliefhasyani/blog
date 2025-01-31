@@ -24,7 +24,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100 heading-container">
                     <span>{{ __("Users Management") }}</span>
                     <a href="{{ route('admin.store') }}">
-                    <button type="button" class="btn btn-primary overflow-hidden shadow-sm sm:rounded-lg; bi bi-person-add">Add User</button>
+                    <button type="button" class="btn btn-primary overflow-hidden shadow-sm sm:rounded-lg; bi bi-person-add"> Add User</button>
                     </a>
                 </div>
             </div>
@@ -57,16 +57,16 @@
                         <td style="text-align:center;">
                             <div class="d-flex justify-content-center">
                                 <a href="{{ route('admin.edit',$value->id) }}">
-                                    <button type="button" class="btn btn-warning shadow-lg bi bi-pen">EDIT</button>
+                                    <button type="button" class="btn btn-warning shadow-lg bi bi-pen"> EDIT</button>
                                 </a>
                                 
                                 <form class="d-inline" action="{{ route('admin.destroy', $value->id) }}" method="POST" >
                                     @csrf
                                     @method('DELETE')   
                                     @if($value->role != 'admin' )
-                                        <button class="btn btn-danger shadow-lg bi bi-trash" type="submit">DELETE</button>
+                                        <button class="btn btn-danger shadow-lg bi bi-trash" type="submit"> DELETE</button>
                                     @else
-                                        <button class="btn btn-danger shadow-lg bi bi-trash" type="submit" disabled>DELETE</button>
+                                        <button class="btn btn-danger shadow-lg bi bi-trash" type="submit" disabled> DELETE</button>
                                     @endif
                                 </form>
                             </div>

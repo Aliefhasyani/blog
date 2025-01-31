@@ -57,15 +57,16 @@
                     
                     <x-input-label for="title" value=' Blog Title'/>
                     <x-text-input id="title" name="title" type="text" class="mt-1 block w-full"  required autofocus autocomplete="title" placeholder="Blog title goes here..."/>
-                    <x-input-error class="mt-2" :messages="$errors->get('title')" />
+                    
                   
                 </div>
                 <br>
                
                 <br>
                 <div>
-                    <x-input-label for="blog" value='Blog Content' />
-                    <textarea name="content" form="usrform" class="mt-1 block w-full" style="height: 1000px" placeholder="Blog content goes here..."></textarea>
+                    <x-input-label for="content" value='Blog Content' />
+                    
+                    <textarea id='content 'name="content"  class="mt-1 block w-full" style="height: 1000px" placeholder="Blog content goes here..."></textarea>
                 </div>
         
                 
