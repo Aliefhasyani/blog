@@ -31,7 +31,10 @@ class AdminController extends Controller
     }   
     
     public function posts(){
-        return view('admin.postsManagement');
+        $posts = DB::table('posts')->paginate(14);
+
+        return view('admin.postsManagement',['posts'=>$posts]);
+   
     }
 
     public function create(){

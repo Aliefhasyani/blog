@@ -47,7 +47,7 @@
                         
                         <td style="text-align:center;">
                             <div class="d-flex justify-content-center">
-                                <a href="{{ route('admin.edit',$value->id) }}">
+                                <a href="{{ route('user.view',$value->id) }}">
                                     <button type="button" class="btn btn-primary shadow-lg bi bi-book"> Read Blog</button>
                                 </a>
                                 

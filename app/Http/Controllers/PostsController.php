@@ -27,4 +27,11 @@ class postsController extends Controller
 
         return view('user.createPosts');
     }
+
+    public function viewPost($id){
+        $posts = Post::findOrFail($id);
+   
+        
+        return view('user.viewPost' ,compact('posts'));
+    }
 }
