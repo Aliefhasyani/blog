@@ -12,6 +12,7 @@ use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\DB;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -35,6 +36,12 @@ class AdminController extends Controller
 
         return view('admin.postsManagement',['posts'=>$posts]);
    
+    }
+
+    public function viewPost($id){
+        $posts = Post::findOrFail($id);
+        
+        return view('user.viewPost' ,compact('posts'));
     }
 
     public function create(){

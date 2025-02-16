@@ -49,10 +49,10 @@
                         
                         <td style="text-align:center;">
                             <div class="d-flex justify-content-center" style="gap:10px;">
-                                <a href="{{ route('admin.edit',$value->id) }}">
+                                <a href="{{ route('admin.view',$value->id) }}">
                                     <button type="button" class="btn btn-primary shadow-lg bi bi-book"> Read Blog</button>
                                 </a>
-                                
+{{--                                 
                                 <a href="{{ route('admin.edit',$value->id) }}">
                                     <button type="button" class="btn btn-danger shadow-lg bi bi-book"> Delete Blog</button>
                                 </a>
@@ -60,7 +60,7 @@
                                 <a href="{{ route('admin.edit',$value->id) }} ">
                                     <button type="button" class="btn btn-warning shadow-lg bi bi-book"> Edit Blog</button>
                                 </a>
-                                
+                                 --}}
                             
                             </div>
                         </td>

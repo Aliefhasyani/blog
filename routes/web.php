@@ -33,6 +33,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
     Route::get('/admin/users',[AdminController::class,'fetchData'])->name('admin.users');
     Route::get('/admin/posts',[AdminController::class,'posts'])->name('admin.posts');
+    Route::get('/admin/viewPost/{id}',[AdminController::class,'viewPost'])->name('admin.view');
     Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.store');
     Route::post('/admin/create', [AdminController::class, 'store'])->name('admin.store');
     Route::patch('/admin/update/{id}', [AdminController::class, 'update'])->name('admin.update');
