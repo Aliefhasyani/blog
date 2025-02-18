@@ -52,15 +52,17 @@
                                 <a href="{{ route('admin.view',$value->id) }}">
                                     <button type="button" class="btn btn-primary shadow-lg bi bi-book"> Read Blog</button>
                                 </a>
-{{--                                 
-                                <a href="{{ route('admin.edit',$value->id) }}">
-                                    <button type="button" class="btn btn-danger shadow-lg bi bi-book"> Delete Blog</button>
-                                </a>
-                            
-                                <a href="{{ route('admin.edit',$value->id) }} ">
+                                
+                                <form action="{{ route('admin.postDelete', $value->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger shadow-lg bi bi-trash"> Delete Blog</button>
+                                </form>
+                                
+                                {{-- <a href="{{ route('admin.edit',$value->id) }} ">
                                     <button type="button" class="btn btn-warning shadow-lg bi bi-book"> Edit Blog</button>
-                                </a>
-                                 --}}
+                                </a> --}}
+                                
                             
                             </div>
                         </td>

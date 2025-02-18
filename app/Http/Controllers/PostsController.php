@@ -34,4 +34,12 @@ class postsController extends Controller
         
         return view('user.viewPost' ,compact('posts'));
     }
+    
+    
+    public function destroy($id){
+        $posts = Post::findOrFail($id);
+        $posts->delete(); 
+
+        return redirect()->back();
+    }
 }

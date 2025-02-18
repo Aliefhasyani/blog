@@ -72,7 +72,7 @@ class AdminController extends Controller
 
 
     public function edit($id){
-        $users = User::find($id);
+        $users = User::findOrFail($id);
         
         return view('admin.editUser', compact('users'));
     }
@@ -82,7 +82,7 @@ class AdminController extends Controller
     public function update(Request $request, $id){
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $id], 
+            'email' => ['required', 'string', 'email', 'max:255' . $id], 
             'role' => ['required', 'in:admin,user'], 
         ]);
 

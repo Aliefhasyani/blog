@@ -44,13 +44,13 @@
                 <br>
                 <div>
                     <x-input-label for="email" value='Email' />
-                    <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" required autocomplete="username"   />
+                    <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" required autocomplete="username" value="{{ $users->email  }}"/>
                     <x-input-error class="mt-2" :messages="$errors->get('email')" />
                 </div>
                 <br>
                 <div>
                     <x-input-label for="password" value='Password' />
-                    <x-text-input id="password" name="password" type="password" class="mt-1 block w-full" required autofocus autocomplete="name" />
+                    <x-text-input id="password" name="password" type="password" class="mt-1 block w-full" required autofocus autocomplete="name"  />
                 </div>
             </div>
             <div class="p-6 text-gray-900 dark:text-gray-100">
