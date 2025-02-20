@@ -22,7 +22,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100 heading-container">
-                    <span>{{ __("Users Management") }}</span>
+                    <span class="bi bi-people">{{ __(" Users Management") }}</span>
                     <a href="{{ route('admin.store') }}">
                     <button type="button" class="btn btn-primary overflow-hidden shadow-sm sm:rounded-lg; bi bi-person-add"> Add User</button>
                     </a>

@@ -42,4 +42,10 @@ class postsController extends Controller
 
         return redirect()->back();
     }
+
+    public function showPostHome(){
+        $posts = Post:: all();
+
+        return view('home',compact('posts'));
+    }
 }

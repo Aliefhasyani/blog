@@ -14,6 +14,24 @@
             </div>
         </div>
     </div>
+
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+      <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+          <div class="card me-auto"  style="width: 18rem;">
+            @foreach($posts as $post)
+              <div class="card-body">
+                  <strong class="card-title" >{{$post->title}}</strong>
+                  <p class="card-text" style="margin-top: 10px">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary bi bi-book" style="margin-top: 20px"> Read Blog</a>
+              </div>
+              @endforeach
+          </div>
+      </div>
+    </div>
+    
+  
+
+    
 </x-app-layout>
 
 

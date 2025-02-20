@@ -13,14 +13,13 @@ Route::get('/', function () {
 
 
 
-Route::get('/home', function () {
-    return view('home');
-})->name('homepage');
+
 
 Route::middleware('auth')->group(function () {
   
     Route::get('/profile/{id{', [UserController::class, 'profilepage'])->name('profilePage');
     Route::get('/posts', [PostsController::class, 'postsPage'])->name('posts');
+    Route::get('/home', [PostsController::class, 'showPostHome'])->name('homepage');
     
    
      

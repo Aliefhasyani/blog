@@ -18,18 +18,18 @@
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('admin.users')" :active="request()->routeIs('admin.users')">
-                            {{ __('Users Management') }}
+                        <x-nav-link :href="route('admin.users')" :active="request()->routeIs('admin.users')" class="bi bi-people">
+                            {{ __(' Users Management') }}
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('admin.posts')" :active="request()->routeIs('admin.posts')">
+                        <x-nav-link :href="route('admin.posts')" :active="request()->routeIs('admin.posts')" class="bi bi-book">
                             {{ __('Posts Management') }}
                         </x-nav-link>
                     </div>
                 @else
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('homepage')" :active="request()->routeIs('homepage')">
+                        <x-nav-link :href="route('homepage')" :active="request()->routeIs('homepage')" class="bi bi-house">
                             {{ __('Home') }}
                         </x-nav-link>
                     </div>
