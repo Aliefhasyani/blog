@@ -48,4 +48,7 @@ class postsController extends Controller
 
         return view('home',compact('posts'));
     }
+
+ 
+    
 }
